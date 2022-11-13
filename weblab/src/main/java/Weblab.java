@@ -5,16 +5,20 @@ import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class Weblab {
 
-  public static ChromeDriver driver;
+  public static FirefoxDriver driver;
   public static String Sucess_Message = "Overrides have been updated and will propagate within 15 minutes";
 
 
   public static void openingBrowser() {
-    WebDriverManager.chromedriver().setup();
-    driver = new ChromeDriver();
+    WebDriverManager.firefoxdriver().setup();
+    FirefoxOptions options = new FirefoxOptions();
+    options.addArguments("--user-data-dir=C:\\Users\\manmzma\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\g5qqzcpo.default-release-1");
+    driver = new FirefoxDriver();
     driver.manage().window().maximize();
   }
 
@@ -30,7 +34,7 @@ public class Weblab {
     Thread.sleep(2000);
     Robot robot = new Robot();
     Thread.sleep(2000);
-    robot.keyPress(KeyEvent.VK_KP_DOWN);
+    robot.keyPress(KeyEvent.VK_DOWN);
     Thread.sleep(2000);
     robot.keyPress(KeyEvent.VK_ENTER);
     driver.findElement(By.xpath("//span[normalize-space()='Save Changes']")).click();
